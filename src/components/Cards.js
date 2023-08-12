@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
 import { ImageURL } from "../util/restaurantData";
 
 const Cards = ({
@@ -12,23 +11,23 @@ const Cards = ({
   sla
 }) => {
   return (
-    <Card style={{ width: "18rem" }} className="d-flex .justify-content-around">
-      <Card.Img
+    <div className="w-72 max-w-sm rounded overflow-hidden shadow-lg gap-4">
+      <img
         variant="top"
+        className="w-full"
         src={
           ImageURL +
           cloudinaryImageId
         }
+        alt="Outlet"
       />
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Text>{avgRating}</Card.Text>
-        <Card.Text>{cuisines.join(", ")}</Card.Text>
-        <Card.Text>{costForTwo}</Card.Text>
-        <Card.Subtitle>{`${sla?.deliveryTime} minutes`}</Card.Subtitle>
-        <Card.Subtitle>{areaName}</Card.Subtitle>
-      </Card.Body>
-    </Card>
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2">{name}</div>
+        <div className="font-bold text-xl mb-2"> {avgRating}</div>
+        <div className="font-bold text-xl mb-2">{areaName}</div>
+      </div>
+
+    </div>
   );
 };
 
