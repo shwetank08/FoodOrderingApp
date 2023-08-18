@@ -31,4 +31,16 @@ const Cards = ({
   );
 };
 
+export const withPromotedLabel = (Cards) =>{
+  return(props)=>{
+    {console.log(props);}
+    return(
+      <div>
+        <label className="bg-black text-white">Promoted</label>
+        <Cards {...props}/>
+      </div>
+    )
+  }
+}
+
 export default Cards;
