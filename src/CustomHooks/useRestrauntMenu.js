@@ -18,10 +18,10 @@ const useRestrauntMenu = (resId) => {
             const information = json?.data?.cards?.map((x) => x.card).find((x) => x && x.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.Restaurant")?.card.info || null;
             setResInfo(information);
 
-            const items = json?.data.cards?.find((x)=>x.groupedCard)?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x)=>x.card?.card)?.filter((x)=>x["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")?.map((x)=>x.itemCards).flat().map((x)=>x.card?.info) || [];
+            const items = json?.data.cards?.find((x)=>x.groupedCard)?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x)=>x.card?.card)?.filter((x)=>x["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
             setMenuItems(items);
-
-            console.log(json.data);
+            console.log(items);
+            console.log("json->data",json.data);
         } catch (err) {
             console.log(err);
         }

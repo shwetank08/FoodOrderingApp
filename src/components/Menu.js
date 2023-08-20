@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import { ImageURL, URL } from "../util/restaurantData";
 import MenuCard from "./MenuCard";
 import useRestrauntMenu from "../CustomHooks/useRestrauntMenu";
+import MenuItems from "./MenuItems";
 const Menu = () => {
   const { resId } = useParams();
 
@@ -30,8 +31,14 @@ const Menu = () => {
   const { deliveryTime } = resInfo.sla;
   console.log(deliveryTime);
   return (
-   <MenuCard name={name} cuisines={cuisines} totalRatingsString={totalRatingsString} areaName={areaName} avgRating={avgRating} costForTwoMessage={costForTwoMessage} deliveryTime={deliveryTime} itemCards={menuItems}/>
-  );
+    <div className="container">
+      <MenuCard name={name} cuisines={cuisines} totalRatingsString={totalRatingsString} areaName={areaName} avgRating={avgRating} costForTwoMessage={costForTwoMessage} deliveryTime={deliveryTime} itemCards={menuItems}/>
+      {menuItems && menuItems.map((e)=>{
+          {console.log(e.itemCards[0]?.card?.info);}
+          return(<MenuItems data={e} key={e.title}/>)
+      })}
+    </div>
+   );
 };
 
 
