@@ -10,6 +10,7 @@ import useRestrauntMenu from "../CustomHooks/useRestrauntMenu";
 import MenuItems from "./MenuItems";
 const Menu = () => {
   const { resId } = useParams();
+  const [showIndex, setShowIndex] = useState(null);
 
   const [resInfo, menuItems] = useRestrauntMenu(resId);
   console.log(resInfo);
@@ -33,9 +34,9 @@ const Menu = () => {
   return (
     <div className="container">
       <MenuCard name={name} cuisines={cuisines} totalRatingsString={totalRatingsString} areaName={areaName} avgRating={avgRating} costForTwoMessage={costForTwoMessage} deliveryTime={deliveryTime} itemCards={menuItems}/>
-      {menuItems && menuItems.map((e)=>{
+      {menuItems && menuItems.map((e,index)=>{
           {console.log(e.itemCards[0]?.card?.info);}
-          return(<MenuItems data={e} key={e.title}/>)
+          return(<MenuItems data={e} key={e.title} showItem={index===showIndex?true:false} handleShowItems={()=>setShowIndex(index)}/>)
       })}
     </div>
    );
